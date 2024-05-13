@@ -1,13 +1,15 @@
 import { BiLogoFacebook, BiLogoGithub, BiLogoLinkedin } from "react-icons/bi";
+import ranaImg from "../assets/rana.jpg";
 import TeamMemberCard from "./TeamMemberCard";
+
 
 const Team = () => {
   const teamMembers = [
     {
-      name: "John Doe",
-      designation: "CEO",
+      name: "Rana Hamid",
+      designation: "Web Developer",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      imageUrl: "https://via.placeholder.com/150",
+      imageUrl: ranaImg,
       socialLinks: [
         { url: "https://facebook.com/", icon: <BiLogoFacebook /> },
         { url: "https://linkedin.com/", icon: <BiLogoLinkedin /> },
@@ -18,7 +20,7 @@ const Team = () => {
       name: "John Doe",
       designation: "CEO",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      imageUrl: "https://via.placeholder.com/150",
+      imageUrl: ranaImg,
       socialLinks: [
         { url: "https://facebook.com/", icon: <BiLogoFacebook /> },
         { url: "https://linkedin.com/", icon: <BiLogoLinkedin /> },
@@ -29,7 +31,7 @@ const Team = () => {
       name: "John Doe",
       designation: "CEO",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      imageUrl: "https://via.placeholder.com/150",
+      imageUrl: ranaImg,
       socialLinks: [
         { url: "https://facebook.com/", icon: <BiLogoFacebook /> },
         { url: "https://linkedin.com/", icon: <BiLogoLinkedin /> },
@@ -40,7 +42,7 @@ const Team = () => {
       name: "John Doe",
       designation: "CEO",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      imageUrl: "https://via.placeholder.com/150",
+      imageUrl: ranaImg,
       socialLinks: [
         { url: "https://facebook.com/", icon: <BiLogoFacebook /> },
         { url: "https://linkedin.com/", icon: <BiLogoLinkedin /> },
@@ -51,7 +53,7 @@ const Team = () => {
       name: "John Doe",
       designation: "CEO",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      imageUrl: "https://via.placeholder.com/150",
+      imageUrl: ranaImg,
       socialLinks: [
         { url: "https://facebook.com/", icon: <BiLogoFacebook /> },
         { url: "https://linkedin.com/", icon: <BiLogoLinkedin /> },
@@ -62,8 +64,8 @@ const Team = () => {
   ];
 
   return (
-    <section id="Team" className="py-20">
-      <h2 className="text-3xl md:text-4xl lg:text-5xl text-center font-bold mb-12">Our Team</h2>
+    <section id="Team" className="py-20 px-5 xl:px-12 md:px-0">
+      <h2 className="text-3xl md:text-4xl text-center font-bold mb-12">Our Team</h2>
       <div className="flex flex-wrap justify-center">
       {teamMembers.map((member, index) => (
         <div key={index} className="m-4">

@@ -1,4 +1,6 @@
 import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Footer from "./components/common/Footer";
 import Header from "./components/common/Header";
 import Contact from "./pages/Contact";
 import Events from "./pages/Events";
@@ -17,6 +19,7 @@ function App() {
         <Route path="/networking" element={<Networking />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer />
     </>
   );
 }

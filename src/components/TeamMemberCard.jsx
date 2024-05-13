@@ -7,10 +7,10 @@ const TeamMemberCard = ({
   socialLinks,
 }) => {
   return (
-    <div className="max-w-xs rounded overflow-hidden shadow-lg bg-white pt-8">
-      <img className="w-30 h-30 m-auto rounded-full" src={imageUrl} alt={name} />
+    <div className="max-w-xs rounded overflow-hidden shadow-lg bg-gray-50 pt-8 text-center">
+      <img className="w-36 h-36 m-auto rounded-full" src={imageUrl} alt={name} />
       <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{name}</div>
+        <div className="font-bold text-xl mb-0">{name}</div>
         <p className="text-gray-700 text-base mb-4">{designation}</p>
         <p className="text-gray-700 text-base">{description}</p>
       </div>

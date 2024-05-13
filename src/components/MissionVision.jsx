@@ -18,7 +18,7 @@ const MissionVision = () => {
               </p>
               <Link
                 to="/"
-                className="inline-block bg-green text-white py-2 px-6 rounded-full shadow-lg "
+                className="inline-block bg-blue-600 text-white py-2 px-6 rounded-full shadow-lg transition-all duration-300 hover:bg-blue-500 "
               >
                 Learn More
               </Link>
@@ -33,7 +33,7 @@ const MissionVision = () => {
               </p>
               <Link
                 to="/"
-                className="inline-block bg-green text-white py-2 px-6 rounded-full shadow-lg "
+                className="inline-block bg-blue-600 text-white py-2 px-6 rounded-full shadow-lg transition-all duration-300 hover:bg-blue-500 "
               >
                 Learn More
               </Link>

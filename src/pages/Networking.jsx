@@ -1,7 +1,20 @@
+import JobBoard from "../components/JobBoard";
+import Mentorship from "../components/Mentorship";
+
 const Networking = () => {
   return (
     <>
-      <h2>This is Networking Component</h2>
+      {/* Mentorship Section JSX Start */}
+
+      <Mentorship />
+
+      {/* Mentorship Section JSX End */}
+
+      {/* Job Board Section JSX Start */}
+
+      <JobBoard />
+
+      {/* Job Board Section JSX End */}
     </>
   );
 };

@@ -1,39 +1,35 @@
+import { useEffect, useState } from "react";
 import Table from "./Table";
 
 const Users = () => {
-  const data = [
-    {
-      name: "John Doe",
-      email: "john@example.com",
-      batch: "2022",
-      status: "Active",
-    },
-    {
-      name: "Jane Smith",
-      email: "jane@example.com",
-      batch: "2023",
-      status: "Inactive",
-    },
-    {
-      name: "Alice Johnson",
-      email: "alice@example.com",
-      batch: "2021",
-      status: "Active",
-    },
-    {
-      name: "Bob Brown",
-      email: "bob@example.com",
-      batch: "2024",
-      status: "Active",
-    },
-  ];
+
+  // Users State
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/users");
+        if (!response.ok) {
+          throw new Error("Failed to fetch users");
+        }
+        const data = await response.json();
+        setUsers(data);
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+    fetchUsers();
+  }, []);
+
+  console.log(users)
 
   return (
     <section id="Members">
       <div className="container mx-auto py-12">
-      <h2 className="text-3xl md:text-4xl font-bold mb-6">Members</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-6">Members</h2>
         <div className="mx-5 md:mx-0">
-          <Table data={data} />
+          <Table users={users} />
         </div>
       </div>
     </section>

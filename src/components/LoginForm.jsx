@@ -45,7 +45,7 @@ const LoginForm = ({ formData, onChange, onSubmit }) => {
               type="submit"
               className="w-full bg-blue-700 hover:bg-blue-500 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline"
             >
-              Register
+              Login
             </button>
             <p className="text-md text-black text-center pt-5">
               Do not have an Account?{" "}

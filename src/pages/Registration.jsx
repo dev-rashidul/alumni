@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import swal from 'sweetalert';
 import registerImg from "../assets/register-img.png";
 import RegisterForm from "../components/RegisterForm";
+ 
 
 const Registration = () => {
   // Navigate Function
@@ -48,10 +50,11 @@ const Registration = () => {
       }
 
       const data = await response.json();
+      swal("Registered!", "User registered successfully", "success" );
       console.log("User registered successfully:", data);
       navigate("/login");
     } catch (error) {
-      console.error("Error registering user:", error.message);
+      swal("Error registering user", "error" );
     }
   };
 

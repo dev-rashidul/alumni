@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-const Table = ({ data }) => {
+const Table = ({ users }) => {
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full divide-y divide-gray-200">
@@ -32,10 +32,10 @@ const Table = ({ data }) => {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {data.map((row, index) => (
+          {users?.map((row, index) => (
             <tr key={index}>
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                {row.name}
+                {row.first_name} {row.last_name}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {row.email}

@@ -1,11 +1,5 @@
 /* eslint-disable react/prop-types */
-const TeamMemberCard = ({
-  name,
-  designation,
-  description,
-  imageUrl,
-  socialLinks,
-}) => {
+const TeamMemberCard = ({ name, designation, description, imageUrl,socialLinks}) => {
   return (
     <div className="max-w-xs rounded overflow-hidden shadow-lg bg-gray-50 pt-8 text-center">
       <img className="w-36 h-36 m-auto rounded-full" src={imageUrl} alt={name} />

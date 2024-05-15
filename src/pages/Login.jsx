@@ -1,8 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import swal from 'sweetalert';
 import loginImg from "../assets/login-img.png";
 import LoginForm from "../components/LoginForm";
 
+
 const Login = () => {
+
+  // Navigate to Home
+  const navigate = useNavigate()
+
   // State for data
 
   const [formData, setFormData] = useState({
@@ -39,8 +46,11 @@ const Login = () => {
       }
 
       const data = await response.json();
+      swal("Logged in!", "Login successful", "success" );
       console.log("Login successful:", data);
+      navigate("/")
     } catch (error) {
+      swal("Something went wrong!", "error" );
       console.error("Error logging in:", error.message);
     }
   };

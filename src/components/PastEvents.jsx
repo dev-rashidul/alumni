@@ -29,7 +29,7 @@ const PastEvents = () => {
   return (
     <section id="PastEvents">
       <div id="Featured">
-        <div className="container mx-auto py-12  px-5 md:px-0">
+        <div className="container mx-auto py-12 px-5 md:px-0 2xl:px-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Past Events
           </h2>

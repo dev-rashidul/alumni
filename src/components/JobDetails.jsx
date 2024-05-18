@@ -13,7 +13,7 @@ const JobDetails = () => {
 
   return (
     <section id="JobDetails">
-      <div className="container mx-auto py-12">
+      <div className="container mx-auto py-12 2xl:px-10">
         <h2 className="text-3xl md:text-4xl font-bold mb-12">Job Details</h2>
         <div className="job">
           <h2 className="text-xl md:text-2xl text-blue-700 font-medium mb-3">

@@ -64,7 +64,7 @@ const Team = () => {
   ];
 
   return (
-    <section id="Team" className="py-20 px-5 xl:px-12 md:px-0">
+    <section id="Team" className="py-20 px-5 xl:px-12 md:px-0 2xl:px-10">
       <h2 className="text-3xl md:text-4xl text-center font-bold mb-12">Our Team</h2>
       <div className="flex flex-wrap justify-center">
       {teamMembers.map((member, index) => (

@@ -6,17 +6,37 @@ const cors = require("cors");
 const app = express();
 const PORT = 3000;
 
-// MySQL Connection
-const connection = mysql.createConnection({
+// MySQL Connections
+const usersConnection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
   database: "users",
 });
 
-connection.connect((err) => {
-  if (err);
-  console.log("Connected to MySQL database");
+const jobsConnection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "jobs",
+});
+
+// Connect to users database
+usersConnection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to users database:', err.stack);
+    return;
+  }
+  console.log('Connected to "users" database');
+});
+
+// Connect to jobs database
+jobsConnection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to jobs database:', err.stack);
+    return;
+  }
+  console.log('Connected to "jobs" database');
 });
 
 // Middleware
@@ -24,12 +44,11 @@ app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
 
 // Register Post API
-
 app.post("/register", (req, res) => {
   const { first_name, last_name, email, password, batch, status } = req.body;
   const userData = { first_name, last_name, email, password, batch, status };
 
-  connection.query("INSERT INTO users SET ?", userData, (error, results) => {
+  usersConnection.query("INSERT INTO users SET ?", userData, (error, results) => {
     if (error) {
       res.status(500).json({ message: "Failed to register user" });
     } else {
@@ -42,9 +61,8 @@ app.post("/register", (req, res) => {
 });
 
 // Get API for all the Users
-
 app.get("/users", (req, res) => {
-  connection.query("SELECT * FROM users", (error, results) => {
+  usersConnection.query("SELECT * FROM users", (error, results) => {
     if (error) {
       res.status(500).json({ message: "Failed to fetch users" });
     } else {
@@ -54,11 +72,10 @@ app.get("/users", (req, res) => {
 });
 
 // Login Post API
-
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
 
-  connection.query(
+  usersConnection.query(
     "SELECT * FROM users WHERE email = ?",
     [email],
     (error, results) => {
@@ -79,6 +96,43 @@ app.post("/login", (req, res) => {
     }
   );
 });
+
+// POST API for job post
+app.post("/jobs", (req, res) => {
+  const { job_title, company_name, location, job_type, salary, job_description } = req.body;
+  const jobData = { job_title, company_name, location, job_type, salary, job_description };
+
+  jobsConnection.query("INSERT INTO jobs SET ?", jobData, (error, results) => {
+    if (error) {
+      res.status(500).json({ message: "Failed to post job" });
+    } else {
+      res.status(201).json({
+        message: "Job posted successfully",
+        jobId: results.insertId,
+      });
+    }
+  });
+});
+
+
+// Get API for a single job by ID
+app.get("/jobs/:id", (req, res) => {
+  const jobId = req.params.id;
+
+  jobsConnection.query("SELECT * FROM jobs WHERE id = ?", [jobId], (error, results) => {
+    if (error) {
+      res.status(500).json({ message: "Failed to fetch job" });
+    } else {
+      if (results.length === 0) {
+        res.status(404).json({ message: "Job not found" });
+      } else {
+        const job = results[0];
+        res.status(200).json(job);
+      }
+    }
+  });
+});
+
 
 // Start the server
 app.listen(PORT, () => {

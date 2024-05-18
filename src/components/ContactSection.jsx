@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ContactSection = () => {
   return (
-    <section id="Contact" className="bg-gray-100 py-12 px-5 md:px-0">
+    <section id="Contact" className="bg-gray-100 py-12 px-5 md:px-0 2xl:px-10">
       <div className="container mx-auto flex flex-wrap">
         {/* Contact Info */}
         <div className="w-full md:w-1/2">

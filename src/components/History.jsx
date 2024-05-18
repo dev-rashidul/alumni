@@ -1,7 +1,7 @@
 const History = () => {
   return (
     <section id="History">
-      <div className="bg-gray-900 text-white py-20 px-5 md:px-0">
+      <div className="bg-gray-900 text-white py-20 px-5 md:px-0 2xl:px-10">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Left Side Content */}

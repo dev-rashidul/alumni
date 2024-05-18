@@ -26,7 +26,7 @@ const Users = () => {
 
   return (
     <section id="Members">
-      <div className="container mx-auto py-12">
+      <div className="container mx-auto py-12 2xl:px-10">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">Members</h2>
         <div className="mx-5 md:mx-0">
           <Table users={users} />

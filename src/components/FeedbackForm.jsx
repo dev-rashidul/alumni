@@ -24,6 +24,21 @@ const FeedbackForm = () => {
         <form onSubmit={handleSubmit} className="max-w-xl mx-auto">
           <div className="mb-4">
             <label
+              htmlFor="email"
+              className="block text-gray-700 text-md font-bold mb-2"
+            >
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              placeholder="Enter your Email"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              rows="4"
+            ></input>
+          </div>
+          <div className="mb-4">
+            <label
               htmlFor="feedback"
               className="block text-gray-700 text-md font-bold mb-2"
             >
@@ -32,8 +47,6 @@ const FeedbackForm = () => {
             <textarea
               id="feedback"
               name="feedback"
-              value={feedback}
-              onChange={(e) => setFeedback(e.target.value)}
               placeholder="Enter your feedback..."
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               rows="4"

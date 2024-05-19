@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaBarsStaggered, FaXmark } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 const Header = () => {
+  // State for Menu Open
+
   const [isOpen, setIsOpen] = useState(false);
+
+  // Function for Toggle Menu
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  // Get Logged in User info
+
+  const { auth } = useContext(AuthContext);
 
   return (
     <nav className="bg-gray-900 py-5 px-5 md:px-0 2xl:px-10">
@@ -35,6 +44,21 @@ const Header = () => {
               <Link to="/contact" className="text-white ms-8">
                 Contact Us
               </Link>
+              {auth?.user ? (
+                <Link to="/profile" className="text-white ms-8">
+                  Profile
+                </Link>
+              ) : (
+                <span>
+                  <Link to="/login" className="text-white ms-8">
+                    Login
+                  </Link>
+                  <span className="text-white px-2">/</span>
+                  <Link to="/register" className="text-white">
+                    Register
+                  </Link>
+                </span>
+              )}
             </div>
           </div>
           <div className="md:hidden">

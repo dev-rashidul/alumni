@@ -1,4 +1,6 @@
 import { useState } from "react";
+import swal from "sweetalert";
+
 
 const JobPostForm = () => {
   // Job Post State
@@ -35,7 +37,16 @@ const JobPostForm = () => {
         throw new Error("Failed to post job");
       }
       const data = await response.json();
-      console.log(data); // Log the response, or handle it as needed
+      setJobData({
+        job_title: "",
+        company_name: "",
+        location: "",
+        job_type: "",
+        salary: "",
+        job_description: "",
+      });
+      swal("Posted!", "Job posted successfully", "success" );
+      console.log(data); 
     } catch (error) {
       console.error(error);
     }

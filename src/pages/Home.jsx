@@ -6,6 +6,7 @@ import MissionVision from "../components/MissionVision";
 import Team from "../components/Team";
 
 const Home = () => {
+
   return (
     <section id="Home" className="font-inter">
       {/* Hero Section JSX Start */}

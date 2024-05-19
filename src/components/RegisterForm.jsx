@@ -106,10 +106,8 @@ const RegisterForm = ({ formData, onChange, onSubmit }) => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             >
               <option value="">Select status</option>
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
-              <option value="Pending">Pending</option>
-              <option value="Suspended">Suspended</option>
+              <option value="Running">Running</option>
+              <option value="Former">Former</option>
             </select>
           </div>
           <div className="mb-6 text-center">

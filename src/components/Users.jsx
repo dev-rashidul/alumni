@@ -22,8 +22,6 @@ const Users = () => {
     fetchUsers();
   }, []);
 
-  console.log(users)
-
   return (
     <section id="Members">
       <div className="container mx-auto py-12 2xl:px-10">

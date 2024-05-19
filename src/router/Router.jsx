@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Membership from "../pages/Membership";
 import Networking from "../pages/Networking";
+import Profile from "../pages/Profile";
 import Registration from "../pages/Registration";
 
 const router = createBrowserRouter([
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
         element: <Networking />,
       },
       {
-        path: `/networking/job/1`,
+        path: `jobs/:jobId`,
         element: <JobDetails />,
       },
       {
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Registration />,
+      },
+
+      {
+        path: "/profile",
+        element: <Profile />,
       },
     ],
   },

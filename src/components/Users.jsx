@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Table from "./Table";
 
 const Users = () => {
-
   // Users State
   const [users, setUsers] = useState([]);
 
@@ -14,11 +13,12 @@ const Users = () => {
           throw new Error("Failed to fetch users");
         }
         const data = await response.json();
-        setUsers(data);
+        setUsers(data); 
       } catch (error) {
-        console.error(error.message);
+        console.error("Error fetching users:", error);
       }
     };
+
     fetchUsers();
   }, []);
 

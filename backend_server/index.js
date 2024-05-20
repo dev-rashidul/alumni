@@ -8,26 +8,12 @@ const path = require("path");
 const app = express();
 const PORT = 3000;
 
-// MySQL Connections
-const usersConnection = mysql.createConnection({
+// MySQL Connection
+const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "users",
-});
-
-const jobsConnection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "jobs",
-});
-
-const uploadsCvConnection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "uploadscv",
+  database: "alumni",
 });
 
 // Middleware
@@ -39,7 +25,7 @@ app.post("/register", (req, res) => {
   const { first_name, last_name, email, password, batch, status } = req.body;
   const userData = { first_name, last_name, email, password, batch, status };
 
-  usersConnection.query(
+  connection.query(
     "INSERT INTO users SET ?",
     userData,
     (error, results) => {
@@ -57,7 +43,7 @@ app.post("/register", (req, res) => {
 
 // Get API for all the Users
 app.get("/users", (req, res) => {
-  usersConnection.query("SELECT * FROM users", (error, results) => {
+  connection.query("SELECT * FROM users", (error, results) => {
     if (error) {
       res.status(500).json({ message: "Failed to fetch users" });
     } else {
@@ -70,7 +56,7 @@ app.get("/users", (req, res) => {
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
 
-  usersConnection.query(
+  connection.query(
     "SELECT * FROM users WHERE email = ?",
     [email],
     (error, results) => {
@@ -111,7 +97,7 @@ app.post("/jobs", (req, res) => {
     job_description,
   };
 
-  jobsConnection.query("INSERT INTO jobs SET ?", jobData, (error, results) => {
+  connection.query("INSERT INTO jobs SET ?", jobData, (error, results) => {
     if (error) {
       res.status(500).json({ message: "Failed to post job" });
     } else {
@@ -125,7 +111,7 @@ app.post("/jobs", (req, res) => {
 
 // GET API to fetch all jobs
 app.get("/jobs", (req, res) => {
-  jobsConnection.query("SELECT * FROM jobs", (error, results) => {
+  connection.query("SELECT * FROM jobs", (error, results) => {
     if (error) {
       res.status(500).json({ message: "Failed to fetch jobs" });
     } else {
@@ -138,7 +124,7 @@ app.get("/jobs", (req, res) => {
 app.get("/jobs/:id", (req, res) => {
   const jobId = req.params.id;
 
-  jobsConnection.query(
+  connection.query(
     "SELECT * FROM jobs WHERE job_id = ?",
     [jobId],
     (error, results) => {
@@ -155,8 +141,6 @@ app.get("/jobs/:id", (req, res) => {
     }
   );
 });
-
-// Application Post API
 
 // Multer storage configuration
 const storage = multer.diskStorage({
@@ -179,7 +163,7 @@ app.post("/upload", upload.single("cv"), (req, res) => {
   const cv = req.file.filename;
   const sql = "INSERT INTO uploadscv (cv) VALUES (?)";
 
-  uploadsCvConnection.query(sql, [cv], (err) => {
+  connection.query(sql, [cv], (err) => {
     if (err) {
       console.error("Error inserting upload:", err);
       return res.status(500).json({ message: "Error inserting upload" });
@@ -193,33 +177,36 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-// Users Database
 
-// CREATE TABLE IF NOT EXISTS users (
+// Databse for Users
+
+// CREATE TABLE users (
 //   user_id INT AUTO_INCREMENT PRIMARY KEY,
 //   first_name VARCHAR(255) NOT NULL,
 //   last_name VARCHAR(255) NOT NULL,
-//   email VARCHAR(255) NOT NULL UNIQUE,
+//   email VARCHAR(255) NOT NULL,
 //   password VARCHAR(255) NOT NULL,
-//   batch INT,
-//   status VARCHAR(50)
+//   batch VARCHAR(255),
+//   status VARCHAR(255)
 // );
 
-// Jobs Databse
+// Database for Jobs
 
-// CREATE TABLE IF NOT EXISTS jobs (
+// CREATE TABLE jobs (
 //   job_id INT AUTO_INCREMENT PRIMARY KEY,
 //   job_title VARCHAR(255) NOT NULL,
 //   company_name VARCHAR(255) NOT NULL,
-//   location VARCHAR(255) NOT NULL,
-//   job_type VARCHAR(50),
+//   location VARCHAR(255),
+//   job_type VARCHAR(255),
 //   salary DECIMAL(10, 2),
-//   job_description TEXT NOT NULL
+//   job_description TEXT
 // );
 
-// UploadsCv Database
+// Database for CV
 
-// CREATE TABLE IF NOT EXISTS uploadscv (
-//   id INT AUTO_INCREMENT PRIMARY KEY,
+// CREATE TABLE uploadscv (
+//   cv_id INT AUTO_INCREMENT PRIMARY KEY,
 //   cv VARCHAR(255) NOT NULL
 // );
+
+

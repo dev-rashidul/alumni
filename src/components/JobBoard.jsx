@@ -36,9 +36,12 @@ const JobBoard = () => {
         <h2 className="text-3xl md:text-4xl font-bold mb-12">Jobs</h2>
         {jobs.map((job) => (
           <div key={job.job_id} className="bg-blue-50 shadow rounded p-5 mb-5">
-            <h2 className="text-xl md:text-2xl text-blue-700 font-medium">
+            <Link
+              to={`/jobs/${job.job_id}`}
+              className="text-xl md:text-2xl text-blue-700 font-medium"
+            >
               {job.job_title}
-            </h2>
+            </Link>
             <p className="text-base text-gray-800 mb-5">
               {job.job_description?.slice(0, 200)}
             </p>
@@ -53,20 +56,25 @@ const JobBoard = () => {
 
         {/* Job Post Button */}
 
-        {auth?.user ? <div className="text-center pt-12">
+        {auth?.user ? (
+          <div className="text-center pt-12">
             <button
               onClick={() => setIsOpen(true)}
               className="text-md text-white bg-blue-700 py-2 px-6 rounded-md transition-all duration-300 hover:bg-blue-500"
             >
               Post a Job
             </button>
-          </div> : <div className="text-center pt-12">
-            <Link to="/login"
+          </div>
+        ) : (
+          <div className="text-center pt-12">
+            <Link
+              to="/login"
               className="text-md text-white bg-blue-700 py-2 px-6 rounded-md transition-all duration-300 hover:bg-blue-500"
             >
               Please Login to post job
             </Link>
-          </div>}
+          </div>
+        )}
         {/* Job Post Form */}
         {isOpen && <JobPostForm />}
       </div>

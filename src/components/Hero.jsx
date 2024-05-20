@@ -4,7 +4,7 @@ import heroImg from "../assets/hero-img.jpg";
 const Hero = () => {
   return (
     <section id="Hero">
-      <div className="bg-gray-100 px-0 2xl:px-10">
+      <div className="bg-gray-100 px-0 xl:px-10">
         <div className="container mx-auto py-12 px-5 md:px-0">
           <div className="md:flex md:items-center md:justify-between">
             {/* Left Side Content */}
